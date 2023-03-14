@@ -6,7 +6,7 @@
 /*   By: wbae <wbae@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:27:02 by wbae              #+#    #+#             */
-/*   Updated: 2023/03/09 17:49:21 by wbae             ###   ########.fr       */
+/*   Updated: 2023/03/14 18:58:32 by wbae             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	before_init(t_info *info, int ac, char *av[])
 	{
 		if (!ft_isdigit(av[i]))
 			return (0);
-		if (!ft_atoi(av[i]))
+		if (ft_atoi(av[i]) < 0)
 			return (0);
 		i++;
 	}
@@ -29,11 +29,11 @@ static int	before_init(t_info *info, int ac, char *av[])
 	info->time_to_die = ft_atoi(av[2]);
 	info->time_to_eat = ft_atoi(av[3]);
 	info->time_to_sleep = ft_atoi(av[4]);
-	info->max_eat_cnt = 0;
+	info->must_eat = 0;
 	if (ac == 6)
-		info->max_eat_cnt = ft_atoi(av[5]);
+		info->must_eat = ft_atoi(av[5]);
 	if (info->num_philo < 1 || info->time_to_die < 0 || info->time_to_eat < 0 \
-		|| info->time_to_sleep < 0 || info->max_eat_cnt < 0)
+		|| info->time_to_sleep < 0 || info->must_eat < 0)
 		return (0);
 	return (1);
 }

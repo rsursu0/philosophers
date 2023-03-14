@@ -18,17 +18,19 @@ INC = -I./inc
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(INC) $(OBJS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(INC) $(OBJS)
+	@echo "Linked into executable \033[0;32mphilo\033[0m."
 
 %.o : %.c
-	$(CC) $(CFLAGS) $(INC) -c $^ -o $@
+	@$(CC) $(CFLAGS) $(INC) -c $^ -o $@
+	@echo "Compiling $<."
 
 clean :
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 
 fclean :
 	@make clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re :
 	@make fclean

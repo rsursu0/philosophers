@@ -6,7 +6,7 @@
 /*   By: wbae <wbae@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:31:06 by wbae              #+#    #+#             */
-/*   Updated: 2023/03/09 17:57:36 by wbae             ###   ########.fr       */
+/*   Updated: 2023/03/14 19:33:38 by wbae             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	ft_atoi(char *av)
 	return (sign * ret);
 }
 
-
 void	ft_end_philo(t_info *info)
 {
 	int	i;
@@ -77,9 +76,8 @@ void	ft_end_philo(t_info *info)
 		pthread_mutex_destroy(&info->m_forks[i]);
 		i++;
 	}
-	pthread_mutex_destroy(&info->m_meal);
 	pthread_mutex_destroy(&info->m_print);
-	// free(info->philos);
-	// free(info->m_forks);
-	// free(info);
+	free(info->philos);
+	free(info->forks);
+	free(info->m_forks);
 }
